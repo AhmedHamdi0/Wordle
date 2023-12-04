@@ -63,12 +63,10 @@ async function init() {
             if (guessParts[i] === wordParts[i]) {
                 // do nothing
             } else if (map[guessParts[i]] && map[guessParts[i]] > 0) {
-                // mark as close
                 allRight = false;
                 letters[currentRow * ANSWER_LENGTH + i].classList.add("close");
                 map[guessParts[i]]--;
             } else {
-                // wrong
                 allRight = false;
                 letters[currentRow * ANSWER_LENGTH + i].classList.add("wrong");
             }
@@ -77,12 +75,9 @@ async function init() {
         currentRow++;
         currentGuess = "";
         if (allRight) {
-            // win
-            alert("you win");
             document.querySelector(".brand").classList.add("winner");
             done = true;
         } else if (currentRow === ROUNDS) {
-            // lose
             alert(`you lose, the word was ${wordOfTheDay}`);
             done = true;
         }
